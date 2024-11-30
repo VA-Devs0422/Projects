@@ -18,6 +18,7 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment:fixed;
+    font-family: "Parkinsans", sans-serif;
 }
 
 .top{
@@ -50,26 +51,40 @@ body{
 }
 
 input{
-    background-color:rgb(146, 146, 159);
+    background-color:rgb(103, 108, 108);
     width: 50%;
    outline: none;
     border: 2px hidden white;
-    border-bottom: 2px dashed white;
+    /* border-bottom: 2px dashed white; */
     text-align: center;
     margin-bottom: 5px;
     color: white;
 }
 input:default{
-    background-color:rgb(146, 146, 159);
+    background-color:rgb(103, 108, 108);
     width: 50%;
    outline: none;
     border: 2px hidden white;
-    border-bottom: 2px dashed white;
+    /* border-bottom: 2px dashed white; */
     text-align: center;
     margin-bottom: 5px;
+    height: 50px;
+}
+input:focus{
+    height: 30px;
+    transition: height 1s ease;
+    border: none;
+    background-color:rgb(103, 108, 108);
+}
+input:hover{
+    height: 30px;
+    transition: height 1s ease;
+    background-color:rgb(103, 108, 108);
 }
 input::placeholder{
     color: white;
+    font-family: "Parkinsans", sans-serif;
+
 }
 
 .btn{
@@ -81,6 +96,8 @@ input::placeholder{
     border-radius: 5px;
     padding: 5px;
     color: white;
+    font-family: "Parkinsans", sans-serif;
+
 }
 
 .container{
@@ -123,7 +140,7 @@ ol{
 
 li{
     margin-left: 5px;
-    list-style: none;
+    /* list-style: none; */
     color: white;
   
 }
