@@ -1,41 +1,71 @@
 let inp=document.querySelector('#inp')
 let btn=document.querySelector('.btn')
+let form = document.querySelector('form')
 let container=document.querySelector('.container')
 let arr=new Array;
-let dele='To be Added';
 let ol=document.createElement('ol')
 
-btn.addEventListener(('click'),(e)=>
+form.addEventListener('submit',(e)=>
 {
     e.preventDefault();
     let value=inp.value;
     arr.push(value)
     console.log(value)
-  
+    ol.classList.add("list")
     let li = document.createElement('li')
-    li.innerText=value;
-    let div=document.createElement('div')
-    div.className='list'
-    div.appendChild(li)
-    console.log(li)
-    ol.appendChild(div)
+    li.classList.add("listItem")
+    li.innerHTML = `
+        <label class="leftOfItem">
+            <input type="checkbox" name="checker" id="checker">
+            <span></span>
+            <p class="taskText">${value}</p>
+        </label>
+        <button class="delete">
+            <img class="btnImg" src="./resources/icons/bin.png" alt="">
+        </button>
+    `
+    ol.appendChild(li)
     container.appendChild(ol)
+    
 
 
-
+    // let li = document.createElement('li')
+    // li.innerText=value;
+    // let div=document.createElement('div')
+    // div.className='list'
+    // div.appendChild(li)
+    // console.log(li)
+    // ol.appendChild(div)
+    // container.appendChild(ol)
 
     /*to delete*/
-    let del=document.createElement('button')
-    del.className='delete'
-    del.innerText='Delete'
-    div.appendChild(del)
-    del.addEventListener('click',(e)=>
-    {     
-        ol.removeChild(div)
+    let del = li.querySelector('.delete');
+    del.addEventListener('click', (e) => {
+        li.remove();
+    });
+
+    // task check-uncheck
+
+    let checker = li.querySelector('#checker')
+    checker.addEventListener('change', (e)=>{
+        if (checker.checked) {
+            li.style.backgroundColor = "#465146f5"
+            li.querySelector('.taskText').style.textDecoration = "line-through";
+            del.disabled = true
+            del.style.backgroundColor = '#d3d3d3';
+            del.style.cursor = 'not-allowed';
+            del.style.pointerEvents = 'none';
+        } else{
+            li.style.backgroundColor = "#232327f5"
+            li.querySelector('.taskText').style.textDecoration = "none";
+            del.disabled = false
+            del.style.backgroundColor = '';
+            del.style.cursor = 'pointer';
+            del.style.pointerEvents = '';
+        }
     })
+    inp.value = ""
 })
-
-
 
 
 // function create()
